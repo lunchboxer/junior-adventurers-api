@@ -1,0 +1,33 @@
+{
+  "name": "junior-adventurers",
+  "version": "0.1.0",
+  "description": "graphql api for 2nd grade class",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lunchboxer/junior-adventurers"
+  },
+  "scripts": {
+    "lint": "eslint src --fix",
+    "start": "NODE_ENV=testing ARC_LOCAL=1 npx sandbox",
+    "test": "NODE_ENV=testing PORT=6666 tape test/*.test.js ./test/**/*.test.js | tap-spec"
+  },
+  "devDependencies": {
+    "@architect/sandbox": "^3.3.6",
+    "@begin/data": "latest",
+    "@graphql-eslint/eslint-plugin": "^0.8.0",
+    "eslint": "^7.18.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "eslint-plugin-unicorn": "^27.0.0",
+    "graphql": "^15.5.0",
+    "nanoid": "^3.1.20",
+    "prettier": "^2.2.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.1.1",
+    "tiny-json-http": "^7.3.0"
+  }
+}
