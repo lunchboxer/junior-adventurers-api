@@ -22,7 +22,11 @@ const server = new ApolloServer({
   },
 })
 
-const handler = server.createHandler()
+const strictCors = { origin: process.env.CLIENT_URL, credentials: false }
+const permissiveCors = { origin: '*', credentials: false }
+
+const cors = process.env.NODE_ENV === 'production' ? strictCors : permissiveCors
+const graphqlHandler = server.createHandler({ cors })
 
 exports.handler = function (event, context, callback) {
   const body = arc.http.helpers.bodyParser(event)
@@ -32,5 +36,5 @@ exports.handler = function (event, context, callback) {
     : event.requestContext.http.method
   // Body is now parsed, re-encode to JSON for Apollo
   event.body = JSON.stringify(body)
-  handler(event, context, callback)
+  graphqlHandler(event, context, callback)
 }
