@@ -1,12 +1,13 @@
 <script>
-const icp = import.meta.env.SNOWPACK_PUBLIC_ICP
+  const icp = '湘ICP备20004695号-1'
 </script>
+
 <footer>
   <p>
     <span class="copy">&copy; Copyright 2021, James Smith</span>
     {#if icp}
-    |
-    <span class="icp">{icp}</span>
+      |
+      <span class="icp">{icp}</span>
     {/if}
   </p>
 </footer>
