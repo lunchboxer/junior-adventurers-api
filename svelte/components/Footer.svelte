@@ -4,7 +4,7 @@
 
 <footer>
   <p>
-    <span class="copy">&copy; Copyright 2021, James Smith</span>
+    <span class="copy">&copy; 2021, James Smith</span>
     {#if icp}
       |
       <span class="icp">{icp}</span>
