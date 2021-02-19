@@ -16,11 +16,10 @@ export const request = async (query, variables) => {
     method: 'post',
     mode: 'cors',
     credentials: 'include',
-    // This makes an unsafe request as far as CORS is concerned and problems
-    // headers: {
-    //'Content-Type': 'application/json',
-    //   Authorization: token || '',
-    // },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token || '',
+    },
     body,
   })
   const result = response && (await response.json())
