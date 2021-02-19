@@ -2,6 +2,7 @@
 junior-adventurers
 
 @static
+folder /frontend/build
 
 @http
 post /graphql

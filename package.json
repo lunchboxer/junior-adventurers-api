@@ -7,7 +7,8 @@
     "url": "https://github.com/lunchboxer/junior-adventurers"
   },
   "scripts": {
-    "lint": "eslint src --fix",
+    "build": "cd frontend && npm run build",
+    "lint": "eslint src frontend/src --fix",
     "start": "NODE_ENV=testing ARC_LOCAL=1 npx sandbox",
     "test": "NODE_ENV=testing PORT=6666 tape test/*.test.js ./test/**/*.test.js | tap-spec"
   },

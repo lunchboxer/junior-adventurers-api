@@ -1,0 +1,31 @@
+{
+  "name": "junior-adventurers",
+  "version": "0.1.0",
+  "description": "2nd grade class website",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lunchboxer/junior-adventurers-frontend"
+  },
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "npm run minify-css && snowpack build",
+    "lint": "eslint src --fix",
+    "test": "exit 1",
+    "minify-css": "postcss public/index.css > public/index.min.css",
+    "launch-browser": "bash ./launch-unsafe-chrome.sh"
+  },
+  "devDependencies": {
+    "@snowpack/plugin-svelte": "^3.5.2",
+    "cssnano": "^4.1.10",
+    "dotenv": "^8.2.0",
+    "eslint-plugin-svelte3": "^3.0.0",
+    "http-proxy": "^1.18.1",
+    "postcss": "^8.2.6",
+    "postcss-cli": "^8.3.1",
+    "prettier-plugin-svelte": "^2.1.1",
+    "snowpack": "^3.0.11",
+    "stylelint-config-recommended": "^3.0.0",
+    "svelte": "^3.32.0",
+    "svelte-spa-router": "^3.1.0"
+  }
+}
