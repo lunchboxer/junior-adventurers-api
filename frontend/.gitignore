@@ -1,9 +1,0 @@
-.DS_Store
-node_modules
-yarn-error.log
-/cypress/screenshots/
-notes.org
-.tern-port
-build/
-.env
-ossutil_output

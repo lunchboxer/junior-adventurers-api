@@ -1,5 +1,6 @@
 module.exports = {
   extends: ['standard', 'plugin:unicorn/recommended'],
+  ignorePatterns: ['node_modules'],
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: 'module',
