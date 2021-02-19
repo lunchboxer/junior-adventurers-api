@@ -4,7 +4,7 @@ require('dotenv').config()
 module.exports = {
   mount: {
     public: '/',
-    src: '/dist',
+    svelte: '/dist',
   },
   plugins: ['@snowpack/plugin-svelte'],
   routes: [
@@ -19,6 +19,7 @@ module.exports = {
     /* ... */
   },
   devOptions: {
+    open: 'none',
     /* ... */
   },
   buildOptions: {
