@@ -1,8 +1,12 @@
 module.exports = {
-  extends: ['standard', 'plugin:unicorn/recommended'],
+  extends: [
+    'standard',
+    'plugin:unicorn/recommended',
+    'plugin:node/recommended',
+  ],
   ignorePatterns: ['node_modules'],
   parserOptions: {
-    ecmaVersion: 2019,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   env: {
@@ -23,5 +27,14 @@ module.exports = {
     'space-before-function-paren': 0,
     'comma-dangle': ['error', 'always-multiline'],
     'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 2, maxEOF: 1 }],
+    'node/exports-style': ['error', 'module.exports'],
+    'node/file-extension-in-import': ['error', 'always'],
+    'node/prefer-global/buffer': ['error', 'always'],
+    'node/prefer-global/console': ['error', 'always'],
+    'node/prefer-global/process': ['error', 'always'],
+    'node/prefer-global/url-search-params': ['error', 'always'],
+    'node/prefer-global/url': ['error', 'always'],
+    'node/prefer-promises/dns': 'error',
+    'node/prefer-promises/fs': 'error',
   },
 }

@@ -24,7 +24,7 @@ const server = new ApolloServer({
 
 const graphqlHandler = server.createHandler()
 
-exports.handler = function (event, context, callback) {
+module.exports.handler = function (event, context, callback) {
   const body = arc.http.helpers.bodyParser(event)
   // Support for AWS HTTP API syntax
   event.httpMethod = event.httpMethod

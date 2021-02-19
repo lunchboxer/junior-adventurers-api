@@ -2,7 +2,7 @@ const { makeSchema, fieldAuthorizePlugin } = require('nexus')
 const path = require('path')
 const types = require('./types')
 
-exports.schema = makeSchema({
+module.exports.schema = makeSchema({
   types,
   shouldGenerateArtifacts: process.env.NODE_ENV === 'testing',
   outputs: {
