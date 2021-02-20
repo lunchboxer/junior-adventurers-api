@@ -1,36 +1,42 @@
 const arc = require('@architect/functions')
-const { ApolloServer } = require('apollo-server-lambda')
-const { schema } = require('./schema')
-const { verify } = require('jsonwebtoken')
+const { graphql } = require('graphql')
+const { makeExecutableSchema } = require('@graphql-tools/schema')
+const { resolvers } = require('./resolvers')
+const { getUserId } = require('./utils')
+const fs = require('fs')
+const path = require('path')
 
-function getUserId(event) {
-  const Authorization = event.headers.authorization
-  if (Authorization) {
-    const token = Authorization.replace('Bearer ', '')
-    const verifiedToken = verify(token, process.env.JWT_SECRET)
-    return verifiedToken && verifiedToken.userId
+const typeDefs = fs
+  .readFileSync(path.join(__dirname, 'schema.graphql'), 'utf8')
+  .toString()
+
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers,
+})
+
+const queryHandler = async ({ headers, body }) => {
+  try {
+    const gqlcontext = { userId: getUserId(headers) }
+    const result = await graphql(
+      schema,
+      body.query,
+      {},
+      gqlcontext,
+      body.variables,
+      body.operationName,
+    )
+    return {
+      json: result,
+    }
+  } catch (error) {
+    if (process.env.NODE_ENV === 'production') {
+      return { json: { error: error.name, message: error.message } }
+    }
+    return {
+      json: { error: error.name, message: error.message, stack: error.stack },
+    }
   }
 }
 
-const server = new ApolloServer({
-  schema,
-  context: ({ context, event }) => {
-    return {
-      ...context,
-      userId: getUserId(event),
-    }
-  },
-})
-
-const graphqlHandler = server.createHandler()
-
-module.exports.handler = function (event, context, callback) {
-  const body = arc.http.helpers.bodyParser(event)
-  // Support for AWS HTTP API syntax
-  event.httpMethod = event.httpMethod
-    ? event.httpMethod
-    : event.requestContext.http.method
-  // Body is now parsed, re-encode to JSON for Apollo
-  event.body = JSON.stringify(body)
-  graphqlHandler(event, context, callback)
-}
+module.exports.handler = arc.http.async(queryHandler)
