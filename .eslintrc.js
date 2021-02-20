@@ -1,26 +1,39 @@
 module.exports = {
-  extends: ['standard', 'plugin:unicorn/recommended'],
+  extends: [
+    'standard',
+    'plugin:unicorn/recommended',
+    'plugin:node/recommended',
+  ],
+  ignorePatterns: ['node_modules'],
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
   },
   env: {
     es6: true,
-    browser: true,
+    browser: false,
   },
-  ignorePatterns: ['**/dist/*'],
-  plugins: ['svelte3', 'security'],
+  plugins: ['security'],
   overrides: [
     {
-      files: ['**/*.svelte'],
-      processor: 'svelte3/svelte3',
+      files: ['*.graphql'],
+      parser: '@graphql-eslint/eslint-plugin',
+      plugins: ['@graphql-eslint'],
     },
   ],
   rules: {
     'unicorn/filename-case': 0,
-    'import/first': 0,
     'space-before-function-paren': 0,
     'comma-dangle': ['error', 'always-multiline'],
-    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 2, maxEOF: 1 }],
+    'node/exports-style': ['error', 'module.exports'],
+    'node/file-extension-in-import': ['error', 'always'],
+    'node/prefer-global/buffer': ['error', 'always'],
+    'node/prefer-global/console': ['error', 'always'],
+    'node/prefer-global/process': ['error', 'always'],
+    'node/prefer-global/url-search-params': ['error', 'always'],
+    'node/prefer-global/url': ['error', 'always'],
+    'node/prefer-promises/dns': 'error',
+    'node/prefer-promises/fs': 'error',
+    'node/no-extraneous-require': 0,
   },
 }
