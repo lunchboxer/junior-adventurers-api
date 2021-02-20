@@ -14,8 +14,6 @@ export const request = async (query, variables) => {
       : JSON.stringify({ query, variables })
   const response = await fetch(endpoint, {
     method: 'post',
-    mode: 'cors',
-    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       Authorization: token || '',

@@ -1,3 +1,4 @@
+const arc = require('@architect/functions')
 const { graphql } = require('graphql')
 const { makeExecutableSchema } = require('@graphql-tools/schema')
 const { resolvers } = require('./resolvers')
@@ -15,8 +16,8 @@ const schema = makeExecutableSchema({
 })
 
 // In this case the request body is a simple json string
-module.exports.handler = async function http({ headers, body }) {
-  const { query, variables, operationName } = JSON.parse(body)
+const graphqlHandler = async ({ body, headers }) => {
+  const { query, variables, operationName } = body
   try {
     const context = { userId: getUserId(headers) }
     const result = await graphql(
@@ -27,10 +28,16 @@ module.exports.handler = async function http({ headers, body }) {
       variables,
       operationName,
     )
-    return JSON.stringify(result)
+    return {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      type: 'application/json; charset=utf8',
+      body: JSON.stringify(result),
+    }
   } catch (error) {
     if (process.env.NODE_ENV === 'production') {
-      return JSON.strinigy({ error: error.name, message: error.message })
+      return JSON.stringify({ error: error.name, message: error.message })
     }
     return JSON.stringify({
       error: error.name,
@@ -39,3 +46,5 @@ module.exports.handler = async function http({ headers, body }) {
     })
   }
 }
+
+module.exports.handler = arc.http.async(graphqlHandler)
