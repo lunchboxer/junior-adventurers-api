@@ -1,9 +1,9 @@
 const fetch = window.fetch
 
 const endpoint =
-  import.meta.env.MODE === 'production'
-    ? import.meta.env.SNOWPACK_PUBLIC_PROD_API_ENDPOINT
-    : import.meta.env.SNOWPACK_PUBLIC_DEV_API_ENDPOINT
+  import.meta.env.MODE === 'development'
+    ? import.meta.env.SNOWPACK_PUBLIC_DEV_API_ENDPOINT
+    : import.meta.env.SNOWPACK_PUBLIC_PROD_API_ENDPOINT
 
 export const request = async (query, variables) => {
   const coldAuth = window.localStorage.getItem('auth')
