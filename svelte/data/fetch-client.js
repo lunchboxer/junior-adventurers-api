@@ -1,5 +1,3 @@
-const fetch = window.fetch
-
 const endpoint =
   import.meta.env.MODE === 'development'
     ? import.meta.env.SNOWPACK_PUBLIC_DEV_API_ENDPOINT

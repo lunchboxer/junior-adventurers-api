@@ -3,6 +3,7 @@ const { graphql } = require('graphql')
 const { makeExecutableSchema } = require('@graphql-tools/schema')
 const { resolvers } = require('./resolvers')
 const { getUserId } = require('./utils')
+const { checkOrigin } = require('@architect/shared/check-origin')
 const fs = require('fs')
 const path = require('path')
 
@@ -15,6 +16,7 @@ const schema = makeExecutableSchema({
   resolvers,
 })
 
+// This is for CORS
 // In this case the request body is a simple json string
 const graphqlHandler = async ({ body, headers }) => {
   const { query, variables, operationName } = body
@@ -28,9 +30,13 @@ const graphqlHandler = async ({ body, headers }) => {
       variables,
       operationName,
     )
+    const origin = checkOrigin(headers.origin)
+    if (origin === false) {
+      return { statusCode: 403 }
+    }
     return {
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': origin,
       },
       type: 'application/json; charset=utf8',
       body: JSON.stringify(result),

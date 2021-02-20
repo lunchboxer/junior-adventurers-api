@@ -23,10 +23,8 @@ module.exports = {
   ],
   rules: {
     'unicorn/filename-case': 0,
-    'import/first': 0,
     'space-before-function-paren': 0,
     'comma-dangle': ['error', 'always-multiline'],
-    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 2, maxEOF: 1 }],
     'node/exports-style': ['error', 'module.exports'],
     'node/file-extension-in-import': ['error', 'always'],
     'node/prefer-global/buffer': ['error', 'always'],
@@ -36,5 +34,6 @@ module.exports = {
     'node/prefer-global/url': ['error', 'always'],
     'node/prefer-promises/dns': 'error',
     'node/prefer-promises/fs': 'error',
+    'node/no-extraneous-require': 0,
   },
 }

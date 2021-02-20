@@ -4,6 +4,9 @@ junior-adventurers
 @static
 folder /build
 
+@shared
+src src/shared
+
 @http
 post /graphql
 options /graphql

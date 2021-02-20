@@ -1,6 +1,4 @@
-// only try to load .env if needed
-// this requires setting LOCAL in .env to something
-if (!process.env.LOCAL) require('dotenv').config()
+require('dotenv').config()
 /** @type {import("snowpack").SnowpackUserConfig } */
 
 module.exports = {
