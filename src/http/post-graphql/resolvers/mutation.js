@@ -41,8 +41,7 @@ module.exports = {
     return user
   },
   changePassword: async (_, { newPassword, oldPassword }, context) => {
-    await onlyAuthenticatedUsers(context.userId)
-    const user = await data.get({ table: 'users', key: context.userId })
+    const user = await onlyAuthenticatedUsers(context.userId)
     const passwordValid = await compare(oldPassword, user.password)
     if (!passwordValid) throw new Error('Old password not correct.')
     const hashedPassword = await hash(newPassword, 10)
