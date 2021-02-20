@@ -6,7 +6,6 @@ folder /build
 
 @http
 post /graphql
-get /graphql
 options /graphql
 
 @tables
