@@ -2,6 +2,9 @@
 // this requires setting LOCAL in .env to something
 if (!process.env.LOCAL) require('dotenv').config()
 /** @type {import("snowpack").SnowpackUserConfig } */
+console.log(process.env.SNOWPACK_PUBLIC_PROD_API_ENDPOINT)
+console.log(process.env.SNOWPACK_PUBLIC_DEV_API_ENDPOINT)
+console.log(process.env.NODE_ENV)
 
 module.exports = {
   mount: {
@@ -22,6 +25,7 @@ module.exports = {
   },
   devOptions: {
     open: 'none',
+    output: 'stream',
     /* ... */
   },
   buildOptions: {
