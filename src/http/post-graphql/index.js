@@ -31,6 +31,7 @@ const graphqlHandler = async ({ body, headers }) => {
       operationName,
     )
     const origin = checkOrigin(headers.origin)
+    console.log('from checkOrigin got:', origin)
     if (origin === false) {
       return { statusCode: 403 }
     }

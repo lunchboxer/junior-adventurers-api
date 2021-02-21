@@ -1,6 +1,6 @@
 module.exports.checkOrigin = origin => {
   console.log('origin is:', origin)
-  console.log('process.env.ALLOWED_ORIGINS:', process.evn.ALLOWED_ORIGINS)
+  console.log('process.env.ALLOWED_ORIGINS:', process.env.ALLOWED_ORIGINS)
   if (!process.env.ALLOWED_ORIGINS) return false
   if (process.env.ALLOWED_ORIGINS === '*') return '*'
   const allowedOrigins = process.env.ALLOWED_ORIGINS.split(' ')
