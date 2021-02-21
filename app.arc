@@ -2,7 +2,7 @@
 junior-adventurers
 
 @static
-folder /build
+folder /public
 
 @shared
 
