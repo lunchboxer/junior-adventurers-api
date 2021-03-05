@@ -4,12 +4,13 @@ type AuthPayload {
 }
 
 type Mutation {
-  changePassword(newPassword: String!, oldPassword: String!): User
   createStudent(birthdate: String, languages: String, name: String): Student
+  deleteStudent(key: ID!): Student
   createUser(email: String!, name: String, password: String!): AuthPayload
   deleteUser(key: ID!): User
   login(email: String!, password: String!): AuthPayload
   updateUser(email: String, key: ID!, name: String): User
+  changePassword(newPassword: String!, oldPassword: String!): User
 }
 
 type Query {
