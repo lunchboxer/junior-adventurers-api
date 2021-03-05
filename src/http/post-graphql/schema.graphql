@@ -6,6 +6,12 @@ type AuthPayload {
 type Mutation {
   createStudent(birthdate: String, languages: String, name: String): Student
   deleteStudent(key: ID!): Student
+  updateStudent(
+    key: ID!
+    name: String
+    birthdate: String
+    languages: String
+  ): Student
   createUser(email: String!, name: String, password: String!): AuthPayload
   deleteUser(key: ID!): User
   login(email: String!, password: String!): AuthPayload

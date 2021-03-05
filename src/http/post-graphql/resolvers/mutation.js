@@ -25,6 +25,14 @@ module.exports = {
     await data.destroy({ table: 'students', key })
     return { student }
   },
+  updateStudent: async (_, parameters, context) => {
+    await onlyAuthenticatedUsers(context.userId)
+    const student = await data.get({ table: 'students', key: parameters.key })
+    if (!student) throw new Error('student not found.')
+    const updatedStudent = { ...student, ...parameters }
+    await data.set({ ...updatedStudent })
+    return updatedStudent
+  },
   createUser: async (_, { name, email, password }, context) => {
     if (!isValidEmail(email)) throw new Error('email address not valid')
     await forceUniqueEmail(email)
