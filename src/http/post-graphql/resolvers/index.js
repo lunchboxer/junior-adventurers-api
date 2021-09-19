@@ -1,13 +1,11 @@
 const student = require('./student')
 const user = require('./user')
-const mutation = require('./mutation')
+const Mutation  = require('./Mutation')
 
 module.exports.resolvers = {
   Query: {
     ...student,
     ...user,
   },
-  Mutation: {
-    ...mutation,
-  },
+  Mutation
 }

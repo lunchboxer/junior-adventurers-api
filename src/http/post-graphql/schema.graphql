@@ -26,6 +26,8 @@ type Query {
   user(key: ID!): User
   userCount: Int
   users: [User]
+  schoolyear(key: ID): Schoolyear
+  schoolyears: [Schoolyear]
 }
 
 type Student {
@@ -40,4 +42,17 @@ type User {
   isVerified: Boolean
   key: ID
   name: String
+}
+
+type Schoolyear {
+  key: ID
+  name: String
+  startdate: String
+  enddate: String
+}
+
+type Group {
+  key: ID
+  name: String
+  schoolyear: Schoolyear
 }

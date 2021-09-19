@@ -3,6 +3,8 @@ module.exports = {
     'standard',
     'plugin:unicorn/recommended',
     'plugin:node/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
   ],
   ignorePatterns: ['node_modules'],
   parserOptions: {

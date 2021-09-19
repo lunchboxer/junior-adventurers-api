@@ -1,8 +1,8 @@
 const data = require('@begin/data')
 const { hash, compare } = require('bcrypt')
 const { sign } = require('jsonwebtoken')
-const { isValidEmail } = require('../utils')
-const { onlyAuthenticatedUsers } = require('../permissions')
+const { isValidEmail } = require('../../utils')
+const { onlyAuthenticatedUsers } = require('../../permissions')
 
 const forceUniqueEmail = async email => {
   const allUsers = await data.get({ table: 'users' })

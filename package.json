@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/lunchboxer/junior-adventurers"
   },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
   "scripts": {
     "lint": "eslint src --fix",
     "start": "NODE_ENV=testing ARC_LOCAL=1 npx sandbox",
