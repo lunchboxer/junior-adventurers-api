@@ -4,7 +4,7 @@
   "description": "graphql api for 2nd grade class",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lunchboxer/junior-adventurers"
+    "url": "https://github.com/lunchboxer/junior-adventurers-api"
   },
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@architect/sandbox": "^4.0.4",
+    "@begin/data": "^3.0.0",
     "@graphql-eslint/eslint-plugin": "^2.2.0",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",

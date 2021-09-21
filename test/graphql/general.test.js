@@ -10,7 +10,7 @@ test('Start sandbox', async t => {
   t.ok(result, 'Sandbox started!')
 })
 
-test('GraphQL introspection query returns schma', async t => {
+test('GraphQL introspection query returns schema', async t => {
   t.plan(2)
   try {
     const result = await tiny.post({
