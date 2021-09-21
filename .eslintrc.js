@@ -12,8 +12,7 @@ module.exports = {
     sourceType: 'module',
   },
   env: {
-    es6: true,
-    browser: false,
+    node: true,
   },
   plugins: ['security'],
   overrides: [
@@ -25,6 +24,11 @@ module.exports = {
   ],
   rules: {
     'unicorn/filename-case': 0,
+    'unicorn/prefer-module': 0,
+    'unicorn/numeric-separators-style': [
+      'error',
+      { onlyIfContainsSeparator: true },
+    ],
     'space-before-function-paren': 0,
     'comma-dangle': ['error', 'always-multiline'],
     'node/exports-style': ['error', 'module.exports'],

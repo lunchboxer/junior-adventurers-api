@@ -1,7 +1,7 @@
 const data = require('@begin/data')
 const { onlyAuthenticatedUsers } = require('../permissions')
 
-module.exports = {
+module.exports.User = {
   userCount: async () => {
     return await data.count({ table: 'users' })
   },
