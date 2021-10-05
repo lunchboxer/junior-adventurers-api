@@ -92,4 +92,21 @@ module.exports = {
     await data.set({ ...updatedUser })
     return updatedUser
   },
+  resetCredit: async (_, { studentIds, credit }, context) => {
+    await onlyAuthenticatedUsers(context.userId)
+    const table = 'students'
+    const rows = studentIds.map(student => {
+      return { table, key: student }
+    })
+    const studentsToUpdate = await data.get(rows)
+    const newRows = studentsToUpdate.map(row => {
+      return { table, ...row, credit }
+    })
+    const updatedStudents = await data.set(newRows)
+    // const student = await data.get({ table: 'students', key: parameters.key })
+    // if (!student) throw new Error('student not found.')
+    // const updatedStudent = { ...student, ...parameters }
+    // await data.set({ ...updatedStudent })
+    return updatedStudents
+  },
 }

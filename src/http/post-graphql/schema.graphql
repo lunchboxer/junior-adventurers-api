@@ -11,7 +11,9 @@ type Mutation {
     name: String
     birthdate: String
     languages: String
+    credit: Int
   ): Student
+  resetCredit(studentIds: [ID!]!, credit: Int!): [Student]
   createUser(email: String!, name: String, password: String!): AuthPayload
   deleteUser(key: ID!): User
   login(email: String!, password: String!): AuthPayload
@@ -35,6 +37,7 @@ type Student {
   key: ID
   languages: String
   name: String
+  credit: Int
 }
 
 type User {
@@ -55,4 +58,11 @@ type Group {
   key: ID
   name: String
   schoolyear: Schoolyear
+}
+
+type OutOfClassTime {
+  key: ID
+  student: Student
+  leftTime: String
+  returnTime: String
 }
