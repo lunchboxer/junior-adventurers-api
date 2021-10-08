@@ -4,7 +4,7 @@ type AuthPayload {
 }
 
 type Mutation {
-  createStudent(birthdate: String, languages: String, name: String): Student
+  createStudent(birthdate: String, languages: String, name: String, gender: Gender): Student
   deleteStudent(key: ID!): Student
   updateStudent(
     key: ID!
@@ -12,6 +12,7 @@ type Mutation {
     birthdate: String
     languages: String
     credit: Int
+    gender: Gender
   ): Student
   resetCredit(studentIds: [ID!]!, credit: Int!): [Student]
   createUser(email: String!, name: String, password: String!): AuthPayload
@@ -19,6 +20,8 @@ type Mutation {
   login(email: String!, password: String!): AuthPayload
   updateUser(email: String, key: ID!, name: String): User
   changePassword(newPassword: String!, oldPassword: String!): User
+  studentOutOfClass(studentId: ID!, reason: String, leftTime:String): OutOfClassTime
+  studentBackInClass(key: ID!, returnTime:String): OutOfClassTime
 }
 
 type Query {
@@ -30,14 +33,21 @@ type Query {
   users: [User]
   schoolyear(key: ID): Schoolyear
   schoolyears: [Schoolyear]
+  currentSchoolyear: Schoolyear
 }
 
 type Student {
   birthdate: String
+  gender: Gender
   key: ID
   languages: String
   name: String
   credit: Int
+}
+
+enum Gender {
+  M
+  F
 }
 
 type User {
@@ -50,8 +60,8 @@ type User {
 type Schoolyear {
   key: ID
   name: String
-  startdate: String
-  enddate: String
+  startDate: String
+  endDate: String
 }
 
 type Group {
@@ -62,7 +72,8 @@ type Group {
 
 type OutOfClassTime {
   key: ID
-  student: Student
+  studentId: ID
   leftTime: String
   returnTime: String
+  reason: String
 }
