@@ -12,7 +12,7 @@ module.exports.student = {
     const student = await data.get({ table: 'students', key })
     if (!student) throw new Error('Student not found')
     await data.destroy({ table: 'students', key })
-    return { student }
+    return student
   },
   updateStudent: async (_, parameters, context) => {
     await onlyAuthenticatedUsers(context.userId)

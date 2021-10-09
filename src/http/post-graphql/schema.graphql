@@ -22,6 +22,9 @@ type Mutation {
   changePassword(newPassword: String!, oldPassword: String!): User
   studentOutOfClass(studentId: ID!, reason: String, leftTime:String): OutOfClassTime
   studentBackInClass(key: ID!, returnTime:String): OutOfClassTime
+  createSchoolyear(name: String!, startDate: String, endDate: String): Schoolyear
+  deleteSchoolyear(key: ID!): Schoolyear
+  updateSchoolyear(key: ID!, name:String, startDate: String, endDate: String): Schoolyear
 }
 
 type Query {
