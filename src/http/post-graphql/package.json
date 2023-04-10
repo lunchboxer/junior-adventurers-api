@@ -17,7 +17,7 @@
     "@begin/data": "^3.0.0",
     "@begin/hashid": "^1.0.0",
     "@graphql-tools/schema": "^8.2.0",
-    "aws-sdk": "^2.991.0",
+    "aws-sdk": "^2.1354.0",
     "bcrypt": "^5.0.1",
     "graphql": "^15.5.3",
     "jsonwebtoken": "^9.0.0",
